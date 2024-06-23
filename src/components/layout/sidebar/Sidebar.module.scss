@@ -1,0 +1,68 @@
+.sidebar {
+  position: fixed;
+  background: $bg-color-lighter;
+  width: $drawer-width;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.profile {
+  &-wrapper {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &-photo {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+  }
+
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    &--name {
+      font-size: $font-size-h4;
+    }
+    &--desc {
+      font-size: $font-size-body2;
+      color: $font-color-darker;
+    }
+  }
+}
+
+.navigation {
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 2rem 4rem;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grey-200;
+    }
+
+    &--active {
+      background: $grey-300;
+    }
+
+    &--icon {
+      color: $font-color-dark;
+    }
+
+    // &--label {
+    // }
+  }
+}

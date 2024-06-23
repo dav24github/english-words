@@ -6,6 +6,14 @@ $font-family: "Roboto", sans-serif;
 $font-size-body1: 1.4rem;
 $font-size-body2: 1.2rem;
 
+$font-size-h1: 3.2rem;
+$font-size-h2: 2.8rem;
+$font-size-h3: 2.2rem;
+$font-size-h4: 1.8rem;
+
+//COMP. SIZE
+$drawer-width: 30rem;
+
 //FONT WEIGHTS
 //- Light: 300;
 //- Regular: 400;
@@ -16,7 +24,21 @@ $font-size-body2: 1.2rem;
 
 // LETTER SPACING
 
-// --------------- 02 COLORS ---------------
+//F --------------- 02 COLORS ---------------
+$grey-10: #efeeee;
+$grey-100: #abb0b5;
+$grey-200: #6d6f72;
+$grey-300: #38343b;
+$grey-400: #333333;
+$grey-500: #2b282f;
+$grey-600: #1c1a21;
+
+$bg-color-lighter: $grey-500;
+$bg-color: $grey-600;
+
+$font-color: $grey-10;
+$font-color-dark: $grey-100;
+$font-color-darker: $grey-200;
 
 // --------------- 03 SHADOWS ---------------
 
