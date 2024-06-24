@@ -1,9 +1,7 @@
 import Sidebar from "./sidebar/Sidebar";
 import style from "./MainLayout.module.scss";
+import { ChildrenProps } from "@/models/base";
 
-type ChildrenProps = {
-  children: React.ReactNode;
-};
 export const MainLayout = ({ children }: ChildrenProps) => {
   return (
     <div className={style.container}>
