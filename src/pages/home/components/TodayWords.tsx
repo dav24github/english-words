@@ -1,10 +1,13 @@
 import { WordCard } from "@/components/WordCard";
-import styles from "../Home.module.scss";
+import { Typography } from "@/components/utils";
+import { theme } from "@/utils";
 
 export const TodayWords = () => {
   return (
     <div>
-      <span className={styles["today-title"]}>Today</span>
+      <Typography variant="h4" color={theme.palette.grey[200]}>
+        Today
+      </Typography>
       <WordCard></WordCard>
     </div>
   );

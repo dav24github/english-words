@@ -30,14 +30,6 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-
-    &--name {
-      font-size: $font-size-h4;
-    }
-    &--desc {
-      font-size: $font-size-body2;
-      color: $font-color-darker;
-    }
   }
 }
 
@@ -61,8 +53,5 @@
     &--icon {
       color: $font-color-dark;
     }
-
-    // &--label {
-    // }
   }
 }

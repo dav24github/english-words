@@ -9,12 +9,6 @@
     display: flex;
     flex-direction: column;
   }
-  &-name {
-    font-size: $font-size-h1;
-  }
-  &-desc {
-    color: $font-color-darker;
-  }
 }
 
 .today {

@@ -1,14 +1,12 @@
+import { Typography } from "./utils";
+import styles from "./WordCard.module.scss";
+
 export const WordCard = () => {
   return (
-    <div>
-      <span>World</span>
+    <div className={styles.card}>
+      <Typography>World</Typography>
       <div className="divider"></div>
       {/* <Chip>Mundo</Chip> */}
-      <div className="divider"></div>
-      <div>
-        <span className="material-symbols-outlined">edit</span>
-        <span className="material-symbols-outlined">delete</span>
-      </div>
     </div>
   );
 };

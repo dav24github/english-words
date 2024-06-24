@@ -1,3 +1,4 @@
+import { Typography } from "@/components/utils";
 import styles from "../Sidebar.module.scss";
 
 export const Navigation = () => {
@@ -11,7 +12,7 @@ export const Navigation = () => {
         >
           home
         </span>
-        <span className="navigation-item--label">Home</span>
+        <Typography>Home</Typography>
       </li>
       <li className={styles["navigation-item"]}>
         <span
@@ -19,7 +20,7 @@ export const Navigation = () => {
         >
           menu_book
         </span>
-        <span className="navigation-item--label">Vocabulary</span>
+        <Typography>Vocabulary</Typography>
       </li>
     </ul>
   );
