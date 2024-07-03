@@ -25,9 +25,24 @@ export const SidePanelBody = () => {
         handleOnChange={handleOnChangeInput}
       ></Input>
       <div className={styles["body-list"]}>
-        <ChipWord>Wor</ChipWord>
-        <ChipWord>Words1</ChipWord>
-        <ChipWord>Word1as</ChipWord>
+        <div className={styles["list-item"]}>
+          <IconButton onClick={handleAddClick}>
+            <span className="material-symbols-outlined">remove</span>
+          </IconButton>
+          <ChipWord>Wor</ChipWord>
+        </div>
+        <div className={styles["list-item"]}>
+          <IconButton onClick={handleAddClick}>
+            <span className="material-symbols-outlined">remove</span>
+          </IconButton>
+          <ChipWord>Words1</ChipWord>
+        </div>
+        <div className={styles["list-item"]}>
+          <IconButton onClick={handleAddClick}>
+            <span className="material-symbols-outlined">remove</span>
+          </IconButton>
+          <ChipWord>Word1as</ChipWord>
+        </div>
         <Input
           value={transWord}
           type="chip"
