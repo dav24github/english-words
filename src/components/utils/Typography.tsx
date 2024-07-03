@@ -1,3 +1,4 @@
+import { theme } from "@/utils";
 import styles from "./Typography.module.scss";
 
 type typoProps = {
@@ -13,10 +14,25 @@ export const Typography = ({
   className,
   children,
 }: typoProps) => {
+  let colorVal: string | undefined = "";
+  switch (color) {
+    case "dark":
+      colorVal = theme.palette.grey[100];
+      break;
+    case "darker":
+      colorVal = theme.palette.grey[200];
+      break;
+    default:
+      colorVal = color;
+  }
+
   return (
     <span
       className={[variant ? styles[variant] : "", className].join(" ")}
-      style={{ color: color ?? "" }}
+      style={{
+        display: "block",
+        color: colorVal ?? "",
+      }}
     >
       {children}
     </span>

@@ -4,7 +4,8 @@
 
 .main {
   background: $bg-color;
-  width: 100%;
+  z-index: 0;
+  width: calc(100% - $drawer-width);
   margin-left: $drawer-width;
   height: 100vh;
   overflow-y: auto;

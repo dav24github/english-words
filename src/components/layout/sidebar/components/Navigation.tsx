@@ -1,27 +1,31 @@
 import { Typography } from "@/components/utils";
 import styles from "../Sidebar.module.scss";
+import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
+  const linkStyle = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? `${styles["navigation-item"]} ${styles["navigation-item--active"]}`
+      : `${styles["navigation-item"]}`;
+
   return (
     <ul className={styles["navigation"]}>
-      <li
-        className={`${styles["navigation-item"]} ${styles["navigation-item--active"]}`}
-      >
+      <NavLink className={linkStyle} to={"/"}>
         <span
           className={`${styles["navigation-item--icon"]} material-symbols-outlined`}
         >
           home
         </span>
         <Typography>Home</Typography>
-      </li>
-      <li className={styles["navigation-item"]}>
+      </NavLink>
+      <NavLink className={linkStyle} to={"/control-center"}>
         <span
           className={`${styles["navigation-item--icon"]} material-symbols-outlined`}
         >
           menu_book
         </span>
         <Typography>Vocabulary</Typography>
-      </li>
+      </NavLink>
     </ul>
   );
 };

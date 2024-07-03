@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { MainLayout } from "./components/layout";
-import { ControlCenter } from "./pages/control-center/ControlCenter.page";
 import { Home } from "./pages/home/Home.page";
+import { Vocabulary } from "./pages/vocabulary/Vocabulary.page";
+import { MainLayout } from "./components";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route
           path="/control-center"
-          element={<ControlCenter></ControlCenter>}
+          element={<Vocabulary></Vocabulary>}
         ></Route>
       </Routes>
     </MainLayout>

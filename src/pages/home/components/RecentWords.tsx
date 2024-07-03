@@ -1,12 +1,23 @@
-import { Typography } from "@/components/utils";
-import { theme } from "@/utils";
+import styles from "../Home.module.scss";
+import { Typography, WordCard } from "@/components";
 
 export const RecentWords = () => {
   return (
-    <div>
-      <Typography variant="h4" color={theme.palette.grey[200]}>
+    <div className={styles["section"]}>
+      <Typography variant="h4" color="dark">
         Recent words
       </Typography>
+      <div className={styles["recent-list"]}>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+        <WordCard></WordCard>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,33 @@
+.search {
+  width: 250px;
+}
+
+.filter {
+  &-container {
+    display: flex;
+    gap: 6rem;
+    width: max-content;
+
+    span {
+      color: $grey-200;
+      cursor: pointer;
+      transition: 0.3s all;
+      padding: 0.4rem 1rem;
+
+      &.active {
+        color: $font-color;
+      }
+
+      &:hover {
+        color: $font-color;
+      }
+    }
+  }
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  padding-right: 2rem;
+}

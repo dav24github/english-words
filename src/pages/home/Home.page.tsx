@@ -1,12 +1,12 @@
+import { LayoutContainer } from "@/style-components/layout-container";
 import { HeaderHome, RecentWords, TodayWords } from "./components";
-import style from "./Home.module.scss";
 
 export const Home = () => {
   return (
-    <div className={style.container}>
+    <LayoutContainer>
       <HeaderHome></HeaderHome>
       <TodayWords></TodayWords>
       <RecentWords></RecentWords>
-    </div>
+    </LayoutContainer>
   );
 };
