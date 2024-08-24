@@ -65,7 +65,7 @@ export const Vocabulary = () => {
   };
 
   const filteredWords = value.words.filter((obj) =>
-    obj.word.toLocaleLowerCase().includes(search)
+    obj.word.toLocaleLowerCase().includes(search.toLocaleLowerCase())
   );
 
   const handleAddClick = () => {
