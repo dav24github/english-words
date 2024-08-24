@@ -27,7 +27,10 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
     useState<string[]>(initContainerStyle);
   const [confirmation, setConfirmation] = useState<boolean>(false);
   const portalDiv: Element = document.getElementById("side-panel")!;
-  const [engWord, setEngWord] = useState<string>(editWord.word);
+  const [engWord, setEngWord] = useState<{ value: string; error: boolean }>({
+    value: editWord.word,
+    error: false,
+  });
   const [transWords, setTransWords] = useState<string[]>(editWord.translate);
   const [synonyms, setSynonyms] = useState<string[]>(editWord.synonyms);
   const dispatch = useDispatch();
@@ -65,7 +68,7 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
 
   const onSubmit = () => {
     const wordData = {
-      word: engWord,
+      word: engWord.value,
       translate: transWords,
       synonyms: synonyms,
       upadtedAt: new Date().toString(),
@@ -106,7 +109,8 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
     });
   };
 
-  const isDisabled = engWord === "" || transWords.length === 0;
+  const isDisabled =
+    engWord.value === "" || engWord.error || transWords.length === 0;
 
   return createPortal(
     <NewWordContext.Provider value={value}>

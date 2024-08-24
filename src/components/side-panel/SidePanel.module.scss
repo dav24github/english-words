@@ -169,6 +169,10 @@
   align-items: center;
 }
 
+.error {
+  margin-top: -10px;
+}
+
 @keyframes show {
   from {
     right: -$side-panel-width;

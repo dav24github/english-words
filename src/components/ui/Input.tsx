@@ -6,6 +6,7 @@ type InputProps = {
   handleOnChange: (e: React.FormEvent<HTMLInputElement>) => void;
   icon?: React.ReactNode;
   type?: string;
+  error?: boolean;
 };
 
 export const Input = ({
@@ -14,6 +15,7 @@ export const Input = ({
   handleOnChange,
   icon,
   type,
+  error,
 }: InputProps) => {
   return (
     <div
@@ -21,6 +23,7 @@ export const Input = ({
         styles.input,
         icon ? styles.icon : "",
         type === "chip" ? styles.chip : "",
+        error ? styles.error : "",
       ].join(" ")}
     >
       {icon}

@@ -26,6 +26,17 @@
   }
 }
 
+.error {
+  input {
+    border: 0.5px solid $error !important;
+
+    &:focus {
+      border-color: $error !important;
+      box-shadow: 0 0 10px $error !important;
+    }
+  }
+}
+
 .icon {
   input {
     padding-right: 3.4rem;

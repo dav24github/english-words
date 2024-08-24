@@ -22,6 +22,9 @@ export const Typography = ({
     case "darker":
       colorVal = theme.palette.grey[200];
       break;
+    case "error":
+      colorVal = theme.palette.error;
+      break;
     default:
       colorVal = color;
   }

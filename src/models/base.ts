@@ -8,8 +8,10 @@ export type ButtonProps = {
 } & ChildrenProps;
 
 export type TNewWordContext = {
-  engWord: string;
-  setEngWord: React.Dispatch<React.SetStateAction<string>>;
+  engWord: { value: string; error: boolean };
+  setEngWord: React.Dispatch<
+    React.SetStateAction<{ value: string; error: boolean }>
+  >;
   transWords: string[];
   setTransWords: React.Dispatch<React.SetStateAction<string[]>>;
   synonyms: string[];

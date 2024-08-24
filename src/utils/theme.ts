@@ -1,5 +1,6 @@
 export const theme = {
   palette: {
+    error: "#fe4d5f",
     grey: {
       10: "#efeeee",
       100: "#abb0b5",
