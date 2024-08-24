@@ -88,7 +88,9 @@ export const Vocabulary = () => {
             <span className="material-symbols-outlined">add_circle</span>
           </IconButton>
         </div>
-        <Filter tabs={tabs} onTabChange={onTabChangeHandle}></Filter>
+        {search === "" && (
+          <Filter tabs={tabs} onTabChange={onTabChangeHandle}></Filter>
+        )}
         {search !== "" ? (
           <ListWords words={filteredWords}></ListWords>
         ) : tabs[0].active ? (
