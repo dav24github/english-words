@@ -1,5 +1,5 @@
 import { LayoutContainer } from "@/style-components/layout-container";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Input } from "@/components";
 import { Filter, ListWords } from "./components";
 import styles from "./Vocabulary.module.scss";
@@ -47,6 +47,12 @@ export const Vocabulary = () => {
 
     return wordsByRangeWeekData;
   }, [rangeWeek, value.words]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(sortWords());
+    };
+  }, []);
 
   const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);

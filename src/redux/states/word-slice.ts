@@ -28,7 +28,7 @@ export const wordSlice = createSlice({
     },
     addWord: (state, action: PayloadAction<WordEntity>): WordEntity[] => {
       const newData = [...state];
-      newData.push(action.payload);
+      newData.unshift(action.payload);
       return newData;
     },
     updateWord: (state, action: PayloadAction<WordEntity>): WordEntity[] => {
