@@ -1,4 +1,5 @@
 import { IRootState } from "@/redux/store";
+import { getYYYYMMDDFormat } from "@/utils/date";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,11 +10,11 @@ export const useRangeWeek = () => {
 
   const getWeekRage = () => {
     const rangeWeekData: string[][] = [];
-    const endDate = dayjs(storeWords[0].createdAt);
+    const endDate = dayjs(getYYYYMMDDFormat(storeWords[0].createdAt));
 
-    let firstDayOfWeek = dayjs(storeWords[storeWords.length - 1].createdAt).day(
-      0
-    );
+    let firstDayOfWeek = dayjs(
+      getYYYYMMDDFormat(storeWords[storeWords.length - 1].createdAt)
+    ).day(0);
 
     while (firstDayOfWeek.isBefore(endDate) || firstDayOfWeek.isSame(endDate)) {
       const week = [];

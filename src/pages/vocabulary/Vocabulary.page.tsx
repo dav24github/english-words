@@ -11,6 +11,9 @@ import { SectionWordsContext } from "@/context/SectionWordsCtx";
 import { ListWordsDateSort } from "./components/ListWordsDateSort";
 import { useDispatch } from "react-redux";
 import { shuffleWords, sortWords } from "@/redux/states";
+import { getYYYYMMDDFormat } from "@/utils/date";
+import { IconButton } from "@/style-components";
+import { SidePanelService } from "@/services/event-service";
 
 const initTabs: TypeTabs[] = [
   {
@@ -34,15 +37,16 @@ export const Vocabulary = () => {
     rangeWeek.map((week) => {
       const listWordByWeek = value.words.filter(
         (obj) =>
-          (dayjs(obj.createdAt).isAfter(dayjs(week[0])) ||
-            dayjs(obj.createdAt).isSame(dayjs(week[0]))) &&
-          (dayjs(obj.createdAt).isBefore(dayjs(week[6])) ||
-            dayjs(obj.createdAt).isSame(dayjs(week[6])))
+          (dayjs(getYYYYMMDDFormat(obj.createdAt)).isAfter(dayjs(week[0])) ||
+            dayjs(getYYYYMMDDFormat(obj.createdAt)).isSame(dayjs(week[0]))) &&
+          (dayjs(getYYYYMMDDFormat(obj.createdAt)).isBefore(dayjs(week[6])) ||
+            dayjs(getYYYYMMDDFormat(obj.createdAt)).isSame(dayjs(week[6])))
       );
       wordsByRangeWeekData.push(listWordByWeek);
     });
+
     return wordsByRangeWeekData;
-  }, [value.words]);
+  }, [rangeWeek, value.words]);
 
   const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
@@ -58,16 +62,25 @@ export const Vocabulary = () => {
     obj.word.toLocaleLowerCase().includes(search)
   );
 
+  const handleAddClick = () => {
+    SidePanelService.setSubject(true);
+  };
+
   return (
     <SectionWordsContext.Provider value={value}>
       <LayoutContainer>
-        <div className={styles.search}>
-          <Input
-            hint="Buscar..."
-            value={search}
-            handleOnChange={handleOnChange}
-            icon={<span className="material-symbols-outlined">search</span>}
-          ></Input>
+        <div className={styles.header}>
+          <div className={styles.search}>
+            <Input
+              hint="Buscar..."
+              value={search}
+              handleOnChange={handleOnChange}
+              icon={<span className="material-symbols-outlined">search</span>}
+            ></Input>
+          </div>
+          <IconButton onClick={handleAddClick}>
+            <span className="material-symbols-outlined">add_circle</span>
+          </IconButton>
         </div>
         <Filter tabs={tabs} onTabChange={onTabChangeHandle}></Filter>
         {search !== "" ? (

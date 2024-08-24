@@ -10,6 +10,15 @@ import { NewWordContext } from "./context/NewWordContext";
 import { useDispatch } from "react-redux";
 import { addWord, deleteWord, updateWord } from "@/redux/states";
 import { WordEntity } from "@/types/types";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
+import { LoadingService } from "@/services/loading.service";
+import { db } from "@/services/firebase";
 
 const initContainerStyle = [styles.container];
 
@@ -21,7 +30,7 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
   const [engWord, setEngWord] = useState<string>(editWord.word);
   const [transWords, setTransWords] = useState<string[]>(editWord.translate);
   const [synonyms, setSynonyms] = useState<string[]>(editWord.synonyms);
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const value = useMemo(
     () => ({
       engWord,
@@ -62,28 +71,39 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
       upadtedAt: new Date().toString(),
     };
     if (editWord.id === "") {
-      const newWord: WordEntity = {
+      const newWord: Omit<WordEntity, "id"> = {
         ...wordData,
-        id: "4",
         open: false,
         createdAt: wordData.upadtedAt!,
       };
-      dispath(addWord(newWord));
+      LoadingService.setSubject(true);
+      addDoc(collection(db, "english"), newWord).then((response) => {
+        dispatch(addWord({ ...newWord, id: response.id }));
+        LoadingService.setSubject(false);
+      });
     } else {
-      const updatedWord: WordEntity = {
+      const updatedWord: Omit<WordEntity, "id"> = {
         ...wordData,
-        id: editWord.id,
+        open: false,
         createdAt: editWord.createdAt,
       };
-      dispath(updateWord(updatedWord));
+      LoadingService.setSubject(true);
+      updateDoc(doc(db, "english", editWord.id), updatedWord).then(() => {
+        dispatch(updateWord({ ...updatedWord, id: editWord.id }));
+        LoadingService.setSubject(false);
+      });
     }
 
     handleCloseClick();
   };
 
   const onDelete = () => {
-    dispath(deleteWord(editWord.id));
-    handleCloseClick();
+    LoadingService.setSubject(true);
+    deleteDoc(doc(db, "english", editWord.id)).then(() => {
+      dispatch(deleteWord(editWord.id));
+      handleCloseClick();
+      LoadingService.setSubject(false);
+    });
   };
 
   const isDisabled = engWord === "" || transWords.length === 0;
@@ -110,7 +130,7 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
                   : "Edit Word"}
               </Typography>
             </div>
-            {!confirmation && (
+            {editWord.id !== "" && !confirmation && (
               <div className={styles["delete-btn"]}>
                 <IconButton onClick={handleDeleteClick}>
                   <span className="material-symbols-outlined">delete</span>
