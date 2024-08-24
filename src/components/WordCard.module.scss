@@ -1,11 +1,88 @@
+.word {
+  white-space: nowrap;
+}
+
 .divider {
   width: 2px;
-  height: 20px;
-  background: $grey-200;
+  height: 30px;
+  background: $grey-300;
 }
 
 .translate-box {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+  max-width: 72px;
+}
+
+.synonyms-icon {
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: 0.3s all;
+  position: relative;
+  cursor: pointer;
+
+  .popover {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    z-index: 100;
+    background-color: $grey-200;
+    transform: scale(0) translateX(-50%);
+    transform-origin: top left;
+    padding: 1rem;
+    margin-bottom: 10px;
+    transition: 0.3s all;
+    border-radius: 12px;
+    box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.4);
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 10px;
+      height: 10px;
+      transform: translate(-50%, -5px) rotateZ(45deg);
+      background-color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+  }
+
+  &:hover {
+    & .popover {
+      padding: 1rem;
+      transform: scale(1) translateX(-50%);
+    }
+  }
+}
+
+.edit-icon {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
+
+  &:hover {
+    background-color: $grey-200;
+
+    span {
+      color: white;
+    }
+  }
+
+  span {
+    color: $grey-200;
+    font-size: 20px;
+    transition: 0.3s all;
+  }
 }

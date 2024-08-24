@@ -4,8 +4,8 @@ import { HeaderHome, RecentWords, TodayWords } from "./components";
 export const Home = () => {
   return (
     <LayoutContainer>
-      <HeaderHome></HeaderHome>
-      <TodayWords></TodayWords>
+      <HeaderHome />
+      <TodayWords />
       <RecentWords></RecentWords>
     </LayoutContainer>
   );

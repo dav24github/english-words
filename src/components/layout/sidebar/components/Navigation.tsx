@@ -18,7 +18,7 @@ export const Navigation = () => {
         </span>
         <Typography>Home</Typography>
       </NavLink>
-      <NavLink className={linkStyle} to={"/control-center"}>
+      <NavLink className={linkStyle} to={"/vocabulary"}>
         <span
           className={`${styles["navigation-item--icon"]} material-symbols-outlined`}
         >

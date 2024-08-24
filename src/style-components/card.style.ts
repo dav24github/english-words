@@ -6,10 +6,9 @@ export const Card = styled.div`
   position: relative;
   background-color: ${theme.palette.grey[500]};
   width: max-content;
-  max-width: 360px;
+  max-width: 400px;
   height: max-content;
-  min-height: 45px;
-  padding: 0.8rem 2rem;
+  padding: 1.2rem 2rem;
   background-clip: padding-box; /* !importanté */
   border: solid ${border} transparent; /* !importanté */
   border-radius: 12px;
