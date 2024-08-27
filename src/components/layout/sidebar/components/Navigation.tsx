@@ -26,6 +26,14 @@ export const Navigation = () => {
         </span>
         <Typography>Vocabulary</Typography>
       </NavLink>
+      <NavLink className={linkStyle} to={"/phrases"}>
+        <span
+          className={`${styles["navigation-item--icon"]} material-symbols-outlined`}
+        >
+          book
+        </span>
+        <Typography>Phrases</Typography>
+      </NavLink>
     </ul>
   );
 };

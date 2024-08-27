@@ -64,8 +64,12 @@ export const Vocabulary = () => {
     if (data[1].active) dispatch(shuffleWords());
   };
 
-  const filteredWords = value.words.filter((obj) =>
-    obj.word.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  const filteredWords = value.words.filter(
+    (obj) =>
+      obj.word.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+      obj.translate
+        .map((ob) => ob.toLocaleLowerCase())
+        .includes(search.toLocaleLowerCase())
   );
 
   const handleAddClick = () => {

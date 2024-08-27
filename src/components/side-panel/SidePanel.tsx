@@ -33,9 +33,12 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
   });
   const [transWords, setTransWords] = useState<string[]>(editWord.translate);
   const [synonyms, setSynonyms] = useState<string[]>(editWord.synonyms);
+  const [updateWords, setUpdateWords] = useState<WordEntity[]>([]);
   const dispatch = useDispatch();
   const value = useMemo(
     () => ({
+      updateWords,
+      setUpdateWords,
       engWord,
       setEngWord,
       transWords,
@@ -95,6 +98,23 @@ export const SidePanel = ({ editWord }: { editWord: WordEntity }) => {
         dispatch(updateWord({ ...updatedWord, id: editWord.id }));
         LoadingService.setSubject(false);
       });
+    }
+
+    if (updateWords.length > 0) {
+      updateWords.map((obj) =>
+        updateDoc(doc(db, "english", obj.id), {
+          ...obj,
+          synonyms: [...obj.synonyms, engWord.value],
+        }).then(() => {
+          dispatch(
+            updateWord({
+              ...obj,
+              synonyms: [...obj.synonyms, engWord.value],
+            })
+          );
+          LoadingService.setSubject(false);
+        })
+      );
     }
 
     handleCloseClick();

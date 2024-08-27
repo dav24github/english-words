@@ -11,12 +11,13 @@ import { auth, db } from "./services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { LoadingService } from "./services/loading.service";
+import { Phrases } from "./pages/phrases/Phrases";
 
 function App() {
   const dispatch = useDispatch();
   const [init, setInit] = useState<boolean>(false);
 
-  const fetchPost = async () => {
+  const fetchData = async () => {
     LoadingService.setSubject(true);
     await getDocs(collection(db, "english")).then((querySnapshot) => {
       const vocabulary = querySnapshot.docs.map((doc) => ({
@@ -33,8 +34,8 @@ function App() {
   };
 
   useEffect(() => {
-    fetchPost();
     signIn();
+    fetchData();
   }, []);
 
   const signIn = async () => {
@@ -57,6 +58,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/vocabulary" element={<Vocabulary />}></Route>
+          <Route path="/phrases" element={<Phrases />}></Route>
         </Routes>
       )}
     </MainLayout>

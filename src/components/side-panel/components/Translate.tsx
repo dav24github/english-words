@@ -1,21 +1,52 @@
 import styles from "../SidePanel.module.scss";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ChipWord, IconButton } from "@/style-components";
 import { TNewWordContext } from "@/models/base";
 import { NewWordContext } from "../context/NewWordContext";
 import { Typography } from "@/components/utils";
 import { Input } from "@/components/ui/Input";
+import { useSelector } from "react-redux";
+import { IRootState } from "@/redux/store";
 
 export const Translate = () => {
   const [showInput, setShowInput] = useState<boolean>(false);
-  const { transWords, setTransWords } = useContext(
-    NewWordContext
-  ) as TNewWordContext;
-
+  const { transWords, synonyms, setTransWords, setSynonyms, setUpdateWords } =
+    useContext(NewWordContext) as TNewWordContext;
   const [newTransWord, setNewTransWord] = useState<string>("");
+  const [synoBackup, setSynoBackup] = useState<string[]>([]);
+  const storeWords = useSelector((state: IRootState) => state.words);
+
+  useEffect(() => {
+    setSynoBackup(synonyms);
+  }, []);
 
   const handleOnChangeChipInput = (e: React.FormEvent<HTMLInputElement>) => {
     setNewTransWord(e.currentTarget.value);
+
+    if (e.currentTarget.value === "") {
+      setUpdateWords([]);
+      setSynonyms(synoBackup);
+    } else {
+      const fetchedSyno = storeWords.filter((obj) => {
+        let include = false;
+        obj.translate.map((trans) => {
+          if (
+            trans.toLocaleLowerCase() ===
+            e.currentTarget.value.toLocaleLowerCase()
+          ) {
+            include = true;
+          }
+        });
+        return include;
+      });
+      setUpdateWords(fetchedSyno);
+
+      const rawSynonyms = [
+        ...synoBackup,
+        ...fetchedSyno.map((obj) => obj.word),
+      ].map((obj) => obj.toLocaleLowerCase());
+      setSynonyms([...new Set(rawSynonyms)]);
+    }
   };
 
   const handleAddTransClick = () => {

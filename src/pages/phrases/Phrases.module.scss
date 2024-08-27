@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin-left: -30px;
+
+  .small-icon {
+    opacity: 0;
+  }
+
+  &:hover {
+    & div {
+      opacity: 1;
+    }
+  }
+}
+
+.chip {
+  padding: 10px 20px;
+  border-radius: 12px;
+  width: max-content;
+  border: 1px solid $grey-200;
+  box-shadow: inset $grey-200 0px 0px 8px -1px;
+}
+
+.small-icon {
+  width: 2.8rem !important;
+  height: 2.8rem !important;
+  transition: 0.3s all;
+
+  span {
+    font-size: 1.8rem !important;
+  }
+}
+
+.newContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -30px;
+
+  div {
+    width: 100%;
+  }
+}
