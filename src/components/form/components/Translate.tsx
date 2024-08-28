@@ -1,4 +1,4 @@
-import styles from "../SidePanel.module.scss";
+import styles from "../Form.module.scss";
 import { useContext, useEffect, useState } from "react";
 import { ChipWord, IconButton } from "@/style-components";
 import { TNewWordContext } from "@/models/base";

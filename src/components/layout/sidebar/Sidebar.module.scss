@@ -7,6 +7,21 @@
   display: flex;
   flex-direction: column;
   gap: 6rem;
+
+  @include responsive(tab-port) {
+    display: none;
+  }
+}
+
+.sidebar-mobile {
+  display: none;
+  background: $bg-color;
+  padding: 0px 6rem;
+  padding-top: 2rem;
+
+  @include responsive(tab-port) {
+    display: block;
+  }
 }
 
 .profile {

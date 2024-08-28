@@ -1,4 +1,4 @@
-import styles from "./SidePanel.module.scss";
+import styles from "./Form.module.scss";
 import { useContext } from "react";
 import { Divider } from "@/style-components";
 import { Input } from "../ui/Input";
@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 import { IRootState } from "@/redux/store";
 
-export const SidePanelBody = ({ createdAt }: { createdAt: string }) => {
+export const FormBody = ({ createdAt }: { createdAt: string }) => {
   const storeWords = useSelector((state: IRootState) => state.words);
   const { engWord, setEngWord } = useContext(NewWordContext) as TNewWordContext;
 

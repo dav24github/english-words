@@ -1,4 +1,4 @@
-import styles from "../SidePanel.module.scss";
+import styles from "../Form.module.scss";
 import { useContext, useState } from "react";
 import { IconButton } from "@/style-components";
 import { theme } from "@/utils";
